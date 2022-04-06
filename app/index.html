@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DrawBot</title>
+    <link rel="icon" type="image/png" sizes="500x500" href="assets/img/icon.png">
+    <link rel="icon" type="image/png" sizes="500x500" href="assets/img/icon.png">
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rationale&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rum+Raisin&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background: #8E98F7;color: rgb(255,255,255);">
+    <div class="container d-flex flex-wrap">
+        <div class="row" style="color: rgb(255,255,255);">
+            <div class="col-md-6 text-center" style="font-family: Rationale, sans-serif;padding: 1.5em;">
+                <h1 style="font-family: 'Rum Raisin', sans-serif;margin-bottom: 2%;">DrawBot</h1><textarea id="log" style="width: 75%;height: 75%;" readonly=""></textarea>
+                <h5>Please do not use this software on online matches, I will not be responsible for any occasional banning.<br></h5>
+            </div>
+            <div class="col-md-6" style="padding: 1.5em;font-family: Montserrat, sans-serif;background: rgba(240,232,232,0.18);color: rgb(255,255,255);text-align: center;">
+                <form>
+                    <div>
+                        <h5 class="texto1">Image URL</h5><input class="form-control" type="text" id="imageurl" style="border-radius: 10px;width: 100%;" required="" name="imageurl">
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <h5 class="texto1" style="width: 45%;margin-right: 5%;">Color palette</h5>
+                        <h5 class="texto1" style="width: 45%;margin-left: 5%;">Pencil</h5><input class="form-control" type="text" id="colorpalete" style="border-radius: 10px;width: 45%;margin-right: 5%;" required="" pattern="[0-9]+" name="righttop" placeholder="x,y coordinate"><input class="form-control" type="text" id="pencil" style="border-radius: 10px;width: 45%;margin-left: 5%;" required="" pattern="[0-9]+" name="rightbotton" placeholder="x,y coordinate">
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <h5 class="texto1" style="width: 45%;margin-right: 5%;">Color picker&nbsp;BOTTON<br></h5>
+                        <h5 class="texto1" style="width: 45%;margin-left: 5%;">Bright picker BOTTON<br></h5><input class="form-control" type="text" id="colorpicker" style="border-radius: 10px;width: 45%;margin-right: 5%;" required="" pattern="[0-9]+" name="colorpickertop" placeholder="x,y coordinate"><input class="form-control" type="text" id="brightpicker" style="border-radius: 10px;width: 45%;margin-left: 5%;" required="" pattern="[0-9]+" name="colorpickerbotton" placeholder="x,y coordinate">
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <h5 class="texto1" style="width: 45%;margin-right: 5%;">Number of colors<br></h5>
+                        <h5 class="texto1" style="width: 45%;margin-left: 5%;">click-to-click time<br></h5><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="numberofcolors" style="border-radius: 10px;width: 45%;margin-right: 5%;" required="" pattern="[0-9]+" name="colorpickertop" placeholder="Maximum of 16000000" title="If the value is blank, 16000000 will be used"><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="clicktime" style="border-radius: 10px;width: 45%;margin-left: 5%;" required="" pattern="[0-9]+" name="colorpickerbotton" placeholder="1/100 is the default" title="If the value is blank, 1/100 will be used">
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <h5 class="texto1" style="width: 45%;margin-right: 5%;">X Image size<br></h5>
+                        <h5 class="texto1" style="width: 45%;margin-left: 5%;">Y Image size<br></h5><input class="form-control" type="text" id="xsize" style="border-radius: 10px;width: 45%;margin-right: 5%;" required="" pattern="[0-9]+" name="colorpickertop" placeholder="Number" title="If the value is blank, 16000000 will be used"><input class="form-control" type="text" id="ysize" style="border-radius: 10px;width: 45%;margin-left: 5%;" required="" pattern="[0-9]+" name="colorpickerbotton" placeholder="Number" title="If the value is blank, 1/100 will be used">
+                    </div>
+                    <div class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
+                        <h5 class="texto1" style="width: 45%;">Pixel gap</h5><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="pixelgap" style="border-radius: 10px;width: 45%;" required="" pattern="[0-9]+" name="colorpickertop" placeholder="Number" title="The space between each drawn pixel, the default is 1px">
+                    </div>
+                    <div>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="pularbranco" checked=""><label class="form-check-label" for="formCheck-1">Skip the white color?</label></div>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="drawarea" checked=""><label class="form-check-label" for="formCheck-1">Use the drawing area as a starting point for the drawing?</label></div>
+                    </div>
+                    <div><select class="form-select" id="conversion" style="margin-top: 20px;">
+                            <optgroup label="Conversion Type">
+                                <option value="I">I</option>
+                                <option value="F">F</option>
+                                <option value="P" selected="">P</option>
+                                <option value="RGB">RGB</option>
+                            </optgroup>
+                        </select>
+                        <div class="d-flex justify-content-xl-center" style="margin-top: 10%;"><button class="btn" data-bs-toggle="tooltip" data-bss-tooltip="" id="draw" type="button" style="margin-right: 1%;" title="Start drawing">DRAW</button><button class="btn" data-bs-toggle="tooltip" data-bss-tooltip="" id="config" type="button" style="margin-left: 1%;" title="Click this button to automatically get the button locations.">CONFIG</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
