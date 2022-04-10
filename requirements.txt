@@ -1,0 +1,8 @@
+Eel==0.14.0
+keyboard==0.13.5
+numpy==1.19.5
+opencv_python==4.5.3.56
+Pillow==9.1.0
+PyAutoGUI==0.9.53
+pynput==1.7.3
+requests==2.26.0

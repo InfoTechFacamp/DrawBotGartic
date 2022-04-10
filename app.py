@@ -73,7 +73,7 @@ def drawImage(imageurl, conversion, xsize, ysize, skipWhite, drawarea, clicktime
                 global globalConfig
                 tamanhoImagemX = globalConfig[10] - globalConfig[8]
                 tamanhoImagemY = globalConfig[11] - globalConfig[9]
-                eel.prompt_alerts("Drawing process started, press ctrl+b to start\nhit q to stop drawing")
+                eel.prompt_alerts("Drawing process started, press ctrl+b to start\nhit q to stop drawing\n")
                 while not keyboard.is_pressed("ctrl+b") and desenhando == True:
                     pass
                 if keyboard.is_pressed("ctrl+b"):
@@ -85,7 +85,7 @@ def drawImage(imageurl, conversion, xsize, ysize, skipWhite, drawarea, clicktime
                         eel.setLogText("Drawing process stopped\n")
             else:
                 getConfig()
-                eel.prompt_alerts("Drawing process started, place the mouse over where the drawing is to be made and hit ctrl+b\nhit q to stop drawing")
+                eel.prompt_alerts("Drawing process started, place the mouse over where the drawing is to be made and hit ctrl+b\nhit q to stop drawing\n")
                 tamanhoImagemX = int(xsize)
                 tamanhoImagemY = int(ysize)
                 while not keyboard.is_pressed("ctrl+b") and desenhando == True:
@@ -282,7 +282,7 @@ def setarConfig():
             res_file.append(bright_res[0])
             res_file.append(bright_res[1])
             
-            eel.prompt_alerts("Now let's set the drawing area\nPress ctrl+b in the upper left corner and then ctrl+n in the lower right corner.")
+            eel.prompt_alerts("Now let's set the drawing area\nPress ctrl+b in the upper left corner and then ctrl+n in the lower right corner.\n")
             while not keyboard.is_pressed("ctrl+b"):
                 pass
             if keyboard.is_pressed("ctrl+b"):
@@ -303,7 +303,7 @@ def setarConfig():
             eel.setLogText('Configuration process finished!\n')
     else:
         eel.setLogText('Gartic normal mode detected, using model 2\n')
-        eel.prompt_alerts("Configuration process started, open the color picker in gartic and press ctrl+x")
+        eel.prompt_alerts("Configuration process started, open the color picker in gartic and press ctrl+x\n")
         while not keyboard.is_pressed("ctrl+x"):
             pass
         if keyboard.is_pressed("ctrl+x"):
@@ -360,7 +360,7 @@ def setarConfig():
             res_file.append(bright_res[0])
             res_file.append(bright_res[1])
             
-            eel.prompt_alerts("Now let's set the drawing area\nPress ctrl+b in the upper left corner and then ctrl+n in the lower right corner.")
+            eel.prompt_alerts("Now let's set the drawing area\nPress ctrl+b in the upper left corner and then ctrl+n in the lower right corner.\n")
             while not keyboard.is_pressed("ctrl+b"):
                 pass
             if keyboard.is_pressed("ctrl+b"):
@@ -399,6 +399,6 @@ def init():
         eel.setTextBox("xsize", str(globalConfig[8]))
         eel.setTextBox("ysize", str(globalConfig[9]))
     else:
-        eel.setLogText("Unable to load your configs, please use the config button to continue")
+        eel.setLogText("Unable to load your configs, please use the config button to continue\n")
 
 eel.start('/index.html')

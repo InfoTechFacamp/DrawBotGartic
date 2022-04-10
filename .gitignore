@@ -2,6 +2,6 @@
 build/
 dist/
 __pycache__/
-draw.png
 images/print.png
 configs.log
+draw.png
